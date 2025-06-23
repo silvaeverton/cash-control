@@ -1,33 +1,43 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDEs
+.idea/
 *.iml
 *.ipr
+*.iws
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VS Code
 .vscode/
+
+# Logs
+*.log
+logs/
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de ambiente (NUNCA subir para o Git)
+.env
+
+# Arquivos sensíveis do Spring
+src/main/resources/application-prod.yml
+src/main/resources/application-test.yml
+
+# Arquivo de configuração específica do IntelliJ
+out/
+
+# Arquivos de relatório do Jacoco
+target/site/jacoco/
+
+# Arquivos de dump do Surefire (erros de testes)
+*.dump
+*.dumpstream
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
