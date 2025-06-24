@@ -29,8 +29,6 @@ public class Income {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "cash_register_id")
-    private CashRegister cashRegister;
+
 
 }
