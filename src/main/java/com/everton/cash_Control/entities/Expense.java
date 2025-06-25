@@ -1,5 +1,6 @@
 package com.everton.cash_Control.entities;
 
+import com.everton.cash_Control.enums.ExitCategory;
 import com.everton.cash_Control.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,6 +26,9 @@ public class Expense {
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+
+    @Enumerated(EnumType.STRING)
+    private ExitCategory exitCategory;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
