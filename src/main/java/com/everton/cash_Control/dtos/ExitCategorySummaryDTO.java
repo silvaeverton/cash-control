@@ -12,7 +12,8 @@ public class ExitCategorySummaryDTO {
     private ExitCategory exitCategory;
     private BigDecimal amount;
     private String description;
-    private BigDecimal total;
+
+
 
 
 }

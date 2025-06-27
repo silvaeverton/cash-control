@@ -1,5 +1,6 @@
 package com.everton.cash_Control.dtos;
 
+import com.everton.cash_Control.enums.ExitCategory;
 import com.everton.cash_Control.enums.PaymentMethod;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,5 +16,6 @@ public class ResponseExpenseDto {
     private String description;
     private LocalDate date;
     private PaymentMethod paymentMethod;
+    private ExitCategory exitCategory;
     private Long userId;
 }

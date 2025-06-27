@@ -14,8 +14,7 @@ import java.math.BigDecimal;
 public class CashRegister {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id = 1L;
 
     @Column(nullable = false)
     private BigDecimal balance = BigDecimal.ZERO;
