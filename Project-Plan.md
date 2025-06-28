@@ -108,24 +108,26 @@
 
 | Método   | Endpoint                          | Descrição                                               |
 |----------|-----------------------------------|---------------------------------------------------------|
-| POST     | `/api/entrada`                    | Criar nova entrada de caixa (venda, etc.)                |
-| GET      | `/api/entrada`                    | Listar todas as entradas                                |
-| GET      | `/api/entrada/{id}`               | Buscar entrada específica por ID                        |
-| PUT      | `/api/entrada/{id}`               | Atualizar uma entrada                                   |
-| DELETE   | `/api/entrada/{id}`               | Deletar uma entrada                                     |
-| POST     | `/api/saida`                      | Criar nova saída de caixa (despesa, etc.)                |
-| GET      | `/api/saida`                      | Listar todas as saídas                                  |
-| GET      | `/api/saida/{id}`                 | Buscar saída específica por ID                          |
-| PUT      | `/api/saida/{id}`                 | Atualizar uma saída                                     |
-| DELETE   | `/api/saida/{id}`                 | Deletar uma saída                                       |
-| GET      | `/api/caixa/saldo`                | Consultar saldo atual do caixa                          |
-| GET      | `/api/caixa/entradas`             | Listar todas as entradas (filtradas, se desejar)         |
-| GET      | `/api/caixa/saidas`               | Listar todas as saídas (filtradas, se desejar)           |
-| GET      | `/api/relatorio/mensal`           | Gerar relatório resumido do mês (PDF ou JSON)            |
-| POST     | `/api/usuario`                    | Criar novo usuário                                      |
-| GET      | `/api/usuario/{id}`               | Consultar dados do usuário                              |
-| PUT      | `/api/usuario/{id}`               | Atualizar usuário                                       |
-| DELETE   | `/api/usuario/{id}`               | Deletar usuário                                         |
+| POST     | `/income`                         | Criar nova entrada de caixa (venda, etc.)               |
+| GET      | `/income`                         | Listar todas as entradas                                |
+| GET      | `/income/{idIncome}`              | Buscar entrada específica por ID                        |
+| GET      | `/income/user/{idUser}`           | Buscar entradas pelo Id do usuário                      |
+| GET      | `/income/payment?method=PIX`      | Buscar entradas pelo metodo de pagamento                |
+| GET      |`/income/by-month?year=2025&month=6`| Buscar por mês                                          |
+| DELETE   | `/income/{idIncome}`               | Deletar uma entrada                                     |
+| POST     | `/expense`                      | Criar nova saída de caixa (despesa, etc.)                |
+| GET      | `/expense`                      | Listar todas as saídas                                  |
+| GET      | `/exoense/{id}`                 | Buscar saída específica por ID                          |
+| GET      | `/expense/user/{idUser}`           | Buscar entradas pelo Id do usuário                      |
+| GET      | `/expense/payment?method=PIX`      | Buscar entradas pelo metodo de pagamento                |
+| GET      |`/expense/by-month?year=2025&month=6`| Buscar por mês                                          |
+| DELETE   | `/expense/{id}`                 | Deletar uma saída                                       |
+| GET      | `/cash-register`                | Consultar saldo atual do caixa                          |
+| GET      | `cash-register/cash`           | Gerar relatório resumido do mês (PDF ou JSON)            |
+| POST     | `/user`                    | Criar novo usuário                                      |
+| GET      | `/user/{id}`               | Consultar dados do usuário                              |
+| PUT      | `/user/{id}`               | Atualizar usuário                                       |
+| PATH     | `/user/{id}`               | inativa user usuário                                         |
 
 ## 📌 6. MVP (Produto Mínimo Viável)
 
