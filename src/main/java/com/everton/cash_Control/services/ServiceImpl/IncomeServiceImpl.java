@@ -13,10 +13,12 @@ import com.everton.cash_Control.services.CashRegisterService;
 import com.everton.cash_Control.services.IncomeService;
 import com.everton.cash_Control.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class IncomeServiceImpl implements IncomeService {
 
@@ -89,7 +91,7 @@ public class IncomeServiceImpl implements IncomeService {
     public List<ResponseIncomeDto> findIncomeByUser(Long idUser) {
         userService.getUserById(idUser);
 
-        List<Income> list = incomeRepository.findIncomeByIdUser(idUser);
+        List<Income> list = incomeRepository.findByUser_id(idUser);
 
         return   list.stream().map(income -> {
             ResponseIncomeDto dto = new ResponseIncomeDto();
@@ -106,9 +108,9 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public List<ResponseIncomeDto> findIncomeByPayment(PaymentMethod payment) {
+    public List<ResponseIncomeDto> findIncomeByPayment(PaymentMethod paymentMethod) {
 
-        List<Income> list = incomeRepository.findIncomeByPayment(payment);
+        List<Income> list = incomeRepository.findByPaymentMethod(paymentMethod);
 
         return list.stream().map(income -> {
             ResponseIncomeDto dto = new ResponseIncomeDto();
@@ -128,7 +130,7 @@ public class IncomeServiceImpl implements IncomeService {
         LocalDate start = LocalDate.of(year,month,1);
         LocalDate end = start.withDayOfMonth(start.lengthOfMonth());
 
-        List<Income> incomes = incomeRepository.findIncomeByMonth(start,end);
+        List<Income> incomes = incomeRepository.findByDateBetween(start,end);
 
         return incomes.stream().map(income -> {
             ResponseIncomeDto dto = new ResponseIncomeDto();

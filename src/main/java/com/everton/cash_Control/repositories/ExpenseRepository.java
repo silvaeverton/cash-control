@@ -11,9 +11,9 @@ import java.util.List;
 
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense,Long> {
-    List<Expense> findExpenseByUserId(Long idUser);
-    List<Expense> findExpenseByMonth(LocalDate startDate, LocalDate endDate);
+    List<Expense> findByUser_id(Long userId);
+    List<Expense> findByDateBetween(LocalDate startDate, LocalDate endDate);
     List<Expense> findExpenseByDate(LocalDate date);
-    List<Expense> findExpenseByPayment(PaymentMethod paymentMethod);
-    List<Expense> findExpenseByCategory(ExitCategory category);
+    List<Expense> findByPaymentMethod(PaymentMethod paymentMethod);
+    List<Expense>  findByExitCategory(ExitCategory category);
 }

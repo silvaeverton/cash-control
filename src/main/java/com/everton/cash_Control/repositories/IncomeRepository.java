@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface IncomeRepository extends JpaRepository<Income,Long> {
-    List<Income> findIncomeByIdUser(Long userId);
-    List<Income> findIncomeByPayment(PaymentMethod paymentMethod);
-    List<Income> findIncomeByMonth(LocalDate startDate, LocalDate endDate);
+    List<Income> findByUser_id(Long userId);
+    List<Income> findByPaymentMethod(PaymentMethod paymentMethod);
+    List<Income> findByDateBetween(LocalDate startDate, LocalDate endDate);
     List<Income> findIncomeByDate(LocalDate date);
 }

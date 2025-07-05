@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cashRegister")
 public class CashRegisterController {
 
-    private final CashRegisterService cashRegisterService;
+    private final   CashRegisterService cashRegisterService;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

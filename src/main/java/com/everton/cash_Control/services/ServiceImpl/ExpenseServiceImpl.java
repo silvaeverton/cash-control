@@ -15,10 +15,12 @@ import com.everton.cash_Control.services.CashRegisterService;
 import com.everton.cash_Control.services.ExpenseService;
 import com.everton.cash_Control.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class ExpenseServiceImpl implements ExpenseService {
 
@@ -90,7 +92,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         LocalDate start = LocalDate.of(year,month,1);
         LocalDate end = start.withDayOfMonth(start.lengthOfMonth());
 
-        List<Expense>  list = expenseRepository.findExpenseByMonth(start,end);
+        List<Expense>  list = expenseRepository.findByDateBetween(start,end);
 
         if(list.isEmpty()) {
             throw new NotFoundException("There are no expenses in the month ", 404);
@@ -111,9 +113,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ResponseExpenseDto> findExpenseByUser(Long idUser) {
+    public List<ResponseExpenseDto> findExpenseByUser(Long userId) {
 
-        List<Expense> list = expenseRepository.findExpenseByUserId(idUser);
+        List<Expense> list = expenseRepository.findByUser_id(userId);
 
         if(list.isEmpty()) {
             throw new NotFoundException("This user does not have an expense",404);
@@ -133,9 +135,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ResponseExpenseDto> findExpenseByPayment(PaymentMethod payment) {
+    public List<ResponseExpenseDto> findExpenseByPayment(PaymentMethod paymentMethod) {
 
-        List<Expense> list = expenseRepository.findExpenseByPayment(payment);
+        List<Expense> list = expenseRepository.findByPaymentMethod(paymentMethod);
 
         if(list.isEmpty()) {
             throw new NotFoundException("Not exist expense for this payment method",404);
@@ -172,7 +174,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public List<ExitCategorySummaryDTO> groupExitsByCategory(ExitCategory category) {
 
-        List<Expense> list = expenseRepository.findExpenseByCategory(category);
+        List<Expense> list = expenseRepository. findByExitCategory( category);
 
         if(list.isEmpty()) {
             throw new NotFoundException("Not exist expense for this category",404);

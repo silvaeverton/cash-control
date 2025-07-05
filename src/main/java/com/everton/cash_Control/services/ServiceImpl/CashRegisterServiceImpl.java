@@ -11,6 +11,7 @@ import com.everton.cash_Control.repositories.ExpenseRepository;
 import com.everton.cash_Control.repositories.IncomeRepository;
 import com.everton.cash_Control.services.CashRegisterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class CashRegisterServiceImpl implements CashRegisterService {
 
@@ -30,17 +32,30 @@ public class CashRegisterServiceImpl implements CashRegisterService {
 
     @Override
     public BigDecimal getBalance() {
-        CashRegister cash = cashRegisterRepository.findById(1L).orElseGet(()->
-               cashRegisterRepository.saveAndFlush(new CashRegister()));
 
-        return cash.getBalance();
+        BigDecimal totalCash ;
+        BigDecimal totalIncome = BigDecimal.ZERO;
+        BigDecimal totalExpense = BigDecimal.ZERO;
+
+        List<Income> incomes = incomeRepository.findAll();
+        List<Expense> expenses = expenseRepository.findAll();
+
+        for(Income income: incomes) {
+          totalIncome = totalIncome.add(income.getAmount());
+        }
+        for(Expense expense: expenses) {
+            totalExpense = totalExpense.add(expense.getAmount());
+        }
+        totalCash = totalIncome.subtract(totalExpense);
+
+        return totalCash;
     }
 
     @Override
     public CashFlowResponseDto getCashFlowByPeriodWithTotals(LocalDate startDate, LocalDate endDate) {
 
-        List<Income> incomes = incomeRepository.findIncomeByMonth(startDate, endDate);
-        List<Expense> expenses = expenseRepository.findExpenseByMonth(startDate,endDate);
+        List<Income> incomes = incomeRepository.findByDateBetween(startDate, endDate);
+        List<Expense> expenses = expenseRepository.findByDateBetween(startDate,endDate);
 
         List<CashFlowDto> cashFlowDtos = new ArrayList<>();
 

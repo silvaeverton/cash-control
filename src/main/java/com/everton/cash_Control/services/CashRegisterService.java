@@ -3,12 +3,11 @@ package com.everton.cash_Control.services;
 import com.everton.cash_Control.dtos.CashFlowResponseDto;
 import com.everton.cash_Control.dtos.DailySummaryDTO;
 import com.everton.cash_Control.entities.CashRegister;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Service
+
 public interface CashRegisterService {
 
     public BigDecimal getBalance();

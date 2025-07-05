@@ -6,11 +6,10 @@ import com.everton.cash_Control.dtos.ResponseExpenseDto;
 import com.everton.cash_Control.entities.Expense;
 import com.everton.cash_Control.enums.ExitCategory;
 import com.everton.cash_Control.enums.PaymentMethod;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface ExpenseService {
 
     public Expense createExpense(RequestExpenseDto request);
